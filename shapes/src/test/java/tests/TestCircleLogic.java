@@ -1,11 +1,12 @@
 package tests;
-import static java.lang.Math.*;
-
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import shapes.Circle;
 
 
 public class TestCircleLogic {
+	
 	final double RADIUS = 5;
 	Circle circle = new Circle(RADIUS);
 	
@@ -18,12 +19,16 @@ public class TestCircleLogic {
 	@Test
 	public void testCircleCircumference() {
 		System.out.println("Inside testCircleCircumference()");
-		assertEquals(circle.getCircumference(), 2*Math.PI*RADIUS);
+		assertTrue(circle.returnCircumference() == 2*Math.PI*RADIUS);
+		circle.setRadius(6);
+		assertTrue(circle.returnCircumference() == 12*Math.PI);
 	}
 	
 	@Test
 	public void testCircleArea() {
 		System.out.println("Inside testCircleArea()");
-		assertTrue(circle.getArea() == Math.PI * Math.pow(RADIUS, 2));
+		assertTrue(circle.returnArea() == Math.PI * Math.pow(RADIUS, 2));
+		circle.setRadius(6);
+		assertTrue(circle.returnArea() == Math.PI * 36);
 	}
 }
